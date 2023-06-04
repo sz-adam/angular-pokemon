@@ -1,0 +1,53 @@
+<div class="pokemon-container">
+<!--szürés-->
+        <div class="filter-pokemon">
+                <div *ngFor="let type of this.service.typeNames">
+                        <div (click)="this.service.filterByType(type)" class="type-pokemon">
+                                <p>{{ type }}</p>
+                        </div>
+                </div>
+        </div>
+
+<!--szürés-->
+        <div *ngIf="!service.showAllPokemon" class="container">
+
+                <div *ngFor="let pokemon of this.service.filteredPokemons let i =index" >
+                        <div class="card" [ngClass]="this.service.getBackgroundColor(pokemon)" (click)="this.service.filterDialogClick(i)">
+
+                                <img [src]="pokemon.sprites.other.dream_world.front_default" alt="">
+                                <div>
+                                        <p>{{pokemon.name}}</p>
+                                        <div class="card-types">
+                                                <div *ngFor="let t of pokemon.types" class="card-type">
+                                                        <p> {{t.type.name}}</p>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        
+
+                </div>
+        </div>
+
+
+
+
+
+        <div class="container" *ngIf="this.service.showAllPokemon">
+                <div *ngFor="let p of this.service.pokemon  let i =index" >
+                        <div class="card" [ngClass]="this.service.getBackgroundColor(p)" (click)="this.service.dialogClick(i)">
+                                <img [src]="p.sprites.other.dream_world.front_default" alt="">
+                                <div>
+                                        <p>{{p.name}}</p>
+                                        <div class="card-types">
+                                                <div *ngFor="let t of p.types" class="card-type">
+                                                        <p> {{t.type.name}}</p>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        
+                </div>
+        </div>
+</div>

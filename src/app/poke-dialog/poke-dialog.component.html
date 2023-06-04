@@ -1,0 +1,43 @@
+<div class="pokemon-container">
+    <div *ngFor="let p of this.service.dialogPokemon" [ngClass]="this.service.getBackgroundColor(p)">
+        <div class="dialog-card">
+            <div class="pokemon-info">
+                <p class="pokemon-name">{{ p.name }}</p>
+                <img [src]="p.sprites.other.home.front_default" alt="Pokemon Image">
+            </div>
+            <div class="dialog-cards">
+                <div class="abilities-info">
+                    <p class="abilitieses">ability</p>
+                    <div *ngFor="let abilities of p.abilities" >
+                        <div class="abilities">
+                            <p>{{abilities.ability.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info">
+                    <div>
+                        <p class="info-type">weight</p>
+                        <p> {{p.weight}}</p>
+                    </div>
+                    <div>
+                        <p class="info-type">base experience</p>
+                        <p>{{p.base_experience}}</p>
+                    </div>
+                </div>
+
+                <div *ngFor="let stat of p.stats">
+                    <div class="stat-info">
+                        <div>
+                            <p class="stat-name">{{ stat.stat.name }}</p>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" [style.width.%]="stat.base_stat"
+                                style="background-color: #476c75;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

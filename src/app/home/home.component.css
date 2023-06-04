@@ -1,0 +1,158 @@
+.home-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #74efff, #9c27b0);
+  background-size: 400% 400%;
+  animation: gradient-bg 10s ease infinite;
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+.poke-bal-botton {
+  width: 500px;
+  height: 250px;
+  border-radius: 50% / 0 0 100% 100%;
+  background-color: rgb(255, 253, 253);
+  border: 5px solid black;
+  border-top: 20px solid black;
+  position: relative;
+  z-index: 1;
+}
+
+.move-bottom-animation {
+  animation: moveBottomAnimation 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveBottomAnimation {
+  0% {
+    bottom: 0;
+  }
+
+  100% {
+    bottom: -600px;
+
+  }
+}
+
+
+.poke-bal-top {
+  width: 500px;
+  height: 250px;
+  border-radius: 50% / 100% 100% 0 0;
+  background-color: red;
+  border: 5px solid black;
+  border-bottom: 20px solid black;
+  position: relative;
+  z-index: 1;
+
+}
+
+.move-top-animation {
+  animation: moveTopAnimation 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveTopAnimation {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: -800px;
+  }
+}
+
+
+.poke-bal {
+  background: black;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+
+}
+
+.poke-bal button {
+    cursor: pointer;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  z-index: 6;
+  border-radius: 50%;
+  border: 20px solid black;
+}
+
+.poke-bal button:hover {
+  background-color: #6fa9b7;
+}
+
+@media only screen and (max-width: 768px) {
+  .home-container {
+    width: 100%;
+    height: 100vh;  
+  }  
+  .poke-bal-top {
+    width: 300px;
+    height: 150px;
+  }
+
+  .poke-bal-botton {
+    width: 300px;
+    height: 150px;
+  }
+
+  .poke-bal{
+    width: 400px;
+  }
+
+  .poke-bal button {
+  
+    width: 100px;
+    height: 100px;
+  }
+
+ 
+}
+
+@media only screen and (max-width: 576px) {
+  .poke-bal-top {
+    width: 250px;
+    height: 125px;
+  }
+
+  .poke-bal-botton {
+    width: 250px;
+    height: 125px;
+  }
+
+  .poke-bal{
+    width: 200px;
+  }
+
+  .poke-bal button {
+  
+    width: 90px;
+    height: 90px;
+  }
+}
