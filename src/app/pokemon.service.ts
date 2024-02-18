@@ -27,14 +27,19 @@ export class PokemonService {
     return this.http.get(`${this.apiUrl}/${name}`);
   }
   initialPokemon() {
-    this.getPokemons()      
-      .subscribe((response: any) => {    
-        response.results.forEach((result: any) => {
-          this.getMoreDate(result.name)           
-            .subscribe((pokemonArray: any) =>
-              this.pokemon.push(pokemonArray))        
-        })
-      })
+    return new Promise<void>((resolve) => {
+      this.getPokemons().subscribe((response: any) => {
+        const requests = response.results.map((result: any) =>
+          this.getMoreDate(result.name).toPromise()
+        );
+  
+        Promise.all(requests).then((pokemonArray: any[]) => {
+          this.pokemon = pokemonArray;
+          this.pokeTypeCategory(this.pokemon);
+          resolve();
+        });
+      });
+    });
   }
 
   pokeTypeCategory(pokemon: any[]) { 
